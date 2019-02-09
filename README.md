@@ -36,6 +36,18 @@ For working with this code you will need:
 This project is distributed under the GNU GPLv3 license (for details see the `LICENSE` file).
 
 ### Screenshots
+![Screenshot of the splash screen with app intro text and a selection of paths. The design has dark grey background, dark green elements, and yellow accents.](screenshots/01-splashScreen.jpg)
+![Screenshot of the path intro screen with short intro, stats, link to path info screen and a button to start the path.](screenshots/02-introScreen.jpg)
+![Screenshot of the top part of the path info screen showing path stats and long text.](screenshots/03a-pathInfoScreen-1.jpg)
+![Screenshot pf the bottom part of the path info screen with contact info for the path mantainer.](screenshots/03b-pathInfoScreen-2.jpg)
+![Screenshot of the path step screen. The main part is a large photo of the path with a yellow direction arrow composited over it. Above the photo are two buttons "intro" and "map", below are two buttons "back" and "next".](screenshots/04-pathStepScreen.jpg)
+![Screenshot of the map screen containing fullscreen map with the path track outlined in dark green. The path steps are marked by small green dots, the active step marked with a large yellow dot containing a number.](screenshots/05-mapScreen.jpg)
+![Screenshot of the activity list screen. There are two elements representing an activity. Each holds the activity title, short description and an arrow to the right.](screenshots/06-activityListScreen.jpg)
+![Screenshot of an activity screen showing short and a list with checkboxes.](screenshots/06a-activityScreen-1.jpg)
+![Screenshot of an activity screen showing long text.](screenshots/06b-activityScreen-2.jpg)
+
+
+
 
 -----
 
