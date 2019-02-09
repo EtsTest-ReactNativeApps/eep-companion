@@ -47,10 +47,10 @@ Co-funded by the  Erasmus+ programme of the European Union.
 >The European Commission support for the production of this publication does not constitute an endorsement of the contents which reflects the views only of the authors, and the Commission cannot be held responsible for any use which may be made of the information contained therein.
 
 ### Creators
-**Project facilitators:** Branislav Ristić, Alexander Marinov
-**Content creation (activities, text):** Jonida Hafizi, Inna Pavlova, Kristina Puvača, Dea Backer, Veronica Telese, Mariana Grațiela Dobre, Mariana Doicu
-**App design and development, photography:** Anna Franková
+**Project facilitators:** Branislav Ristić, Alexander Marinov\
+**Content creation (activities, text):** Jonida Hafizi, Inna Pavlova, Kristina Puvača, Dea Backer, Veronica Telese, Mariana Grațiela Dobre, Mariana Doicu\
+**App design and development, photography:** Anna Franková\
 **Path track design:** Le Fagotin A.S.B.L.
 
 
-![logo ORA Network](logos/ORA_200x133.jpeg) ![logo Le Fagotin A.S.B.L.](logos/lefagotin_logo_transparent_200x86.png)
+![logo ORA Network](logos/ORA_200x150.jpeg) ![logo Le Fagotin A.S.B.L.](logos/lefagotin_logo_transparent_200x86.png)

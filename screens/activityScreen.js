@@ -23,7 +23,7 @@ class ActivityScreen extends Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      title: "Path Info"
+      title: activities[navigation.getParam('id',0)].title
     }
   }
 
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   containerFull: {
     backgroundColor: '#fff',
     padding:10,
-    borderWidth:2,
   },
 });
 

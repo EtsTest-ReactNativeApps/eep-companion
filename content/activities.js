@@ -11,7 +11,7 @@ import CheckList from '../components/checklist.js';
 
 const activities = [
   {
-    title: 'Digital Treasure Hunt - start',
+    title: 'Digital Treasure Hunt',
     intro: 'Search game played along the whole path.',
     about: 'Digital treasure hunt is a search game that can be played alongside other activities.  Best played with friends/classmates - either each on your own, or in groups of 2-5. Can you find the "treasures" in our list?',
     teamGame: true,
@@ -23,15 +23,16 @@ const activities = [
       <View>
     <Text>FIND ME...</Text>
     <CheckList items={[
-      'A reunion of trees',
-      '2 marks of human presence',
-      '2 different generations of the same tree species',
-      '4 different trees with their fruits',
-      'A “human forest” (make the forest with your bodies and arms)',
-      'A bird (or a recording of the sound)',
-      'Something white, something pink, something gray',
-      'An insect (like spider, ant etc.)',
-      'A selfie group with an animal who lives near the forest'
+      'A tree with four trunks coming out of the same root system',
+      'A plant that grows on another plant',
+      'Two signs of human presence along the trail (can be permanent or temporary)',
+      'Two individuals of the same tree species, but of different age',
+      'Four different tree species with their fruits/seeds',
+      'A “human forest” (people from your group pretending to be trees using their body, arms, etc.)',
+      'A bird (or an audio recording of the sound)',
+      'Natural objects in the colours white, pink, gray',
+      'An invertebrate (e. g. spider, ant, etc.) -- or a sign of it',
+      'A selfie with an animal (domestic or wild)'
     ]} />
   </View>
   ),
@@ -48,23 +49,29 @@ const activities = [
     duration:'20 min',
     howToPlay: (
       <View>
-        <Text style={{marginBottom:10}}>Connect your partner's eye and direct it to 1 tree of the forest that pulls (attract) you.</Text>
+        <Text style={{marginBottom:10,fontWeight:'bold'}}>Before the game starts:</Text>
+        <Text style={{marginBottom:10}}>Find a friend - someone who you will trust to safely lead you when blindfolded. You will take turns leading each other through the activity. You can try it out before you start!</Text>
         <Divider />
-        <Text style={{marginBottom:10}}>Help the "blind" partner to explore his tree and to feel it. If you tell to the partner: "feel the tree," he will not answer you with so much interest, but if you say:  Wrap the stomach on the tree's vault"; is your tree alive?; Can you put your arm around the tree? Is the tree older than you? Can you touch or find plants growing around the tree? Are there any traces of animals? Lichens?  Insects?</Text>
+        <Text style={{marginBottom:10,marginTop:10,fontWeight:'bold'}}>For the one who leads:</Text>
+        <Text style={{marginBottom:10}}>Please, blindfold your partner.Then, choose one tree in the forest. You will be your partner’s guide to the tree; please, guide them carefully, instruct them about obstacles on the way, take care that they don’t trip, or fall, or have problems walking without seeing. </Text>
+        <Text style={{marginBottom:10}}>Now return to the chosen tree; first turn your blindfolded partner around a few times, then lead them to the tree using a roundabout way (so it is not easy for your partner to find the tree directly); after they have “met” their tree, please, bring them back to the starting point. Once there, take down the blindfold.</Text>
+        <Text style={{marginBottom:10}}>
+         Now ask your partner to find the tree. Can they do it? If they struggle, you can offer some small hints, like "remember touching the roots" and so on.
+       </Text>
         <Divider />
-        <Text style={{marginBottom:10}}>When your partner finishes exploring, direct him to the position from the beginning, but find another way out.</Text>
-        <Divider />
-        <Text style={{marginBottom:10}}>Then let your friend look open to find the tree explored before. </Text>
-        <Divider />
-        <Text style={{marginBottom:10}}>he tree can be an unforgettable experience. Do you feel related to it? Would you like to spend more time with it?</Text>
-        <Divider />
+        <Text style={{marginBottom:10,marginTop:10,fontWeight:'bold'}}>For the one who is lead:</Text>
+        <Text style={{marginBottom:10}}>Please, trust your partner to lead you to a tree they have chosen.</Text>
+        <Text style={{marginBottom:10}}>Once there, take your time to touch and feel the tree; pay attention to details: structure of the bark, objects at the base of the trunk, shape of the base, holes/scars on the bark, width of the tree trunk, presence of boughs – try to remember anything that can help you identify your tree later.</Text>
+        <Text style={{marginBottom:10}}>
+        Your partner has lead you back to the starting point. Now, try to find your tree again. Can you do it?
+       </Text>
       </View>
     )
   },
   {
     title: 'Tree shapes',
     intro: 'Make each other into the shape of a tree.',
-    about:'The game is based in playing two roles, one are going to be the sculptors and the others the neutral statues like clay.',
+    about:'The game is played in pairs: one player is the sculptor, while the other is the "material" to be shaped, like clay.',
     teamGame:true,
     teamSize: '2 people, taking turns at being the sculptor and the sculpture',
     aloneGame:false,
@@ -72,21 +79,55 @@ const activities = [
     duration: '30 min',
     howToPlay: (
       <View>
+        <Text style={{marginBottom:10,fontWeight:'bold'}}>Before the game starts:</Text>
         <Text style={{marginBottom:10}}>
-          The game is based in playing two roles, one are going to be the sculptors and the others the neutral statues like clay. The sculptors will have a quick look at the photo that they have made of a tree and shape the body of the friend in front of them to make it similar ( thinking about how are the leaves, trunk and roots of the tree).
+          Find a friend to play with. One of you will be a sculptor, the other will become the sculpture.
         </Text>
         <Text style={{marginBottom:10}}>
-          The first group of sculptors will go around and see all the other statues like a gallery. Each sculptor will explain which tree is it and describe their characteristics, during this time the statues will stay still or try to. After,  sculptors make a picture and participants exchange the roles. In the end they can try to remember all the trees that they have made and choose a tree to make it all together!
+          Think of an interesting tree formation you have seen during the walk. (If you can't remember anything, look around you or use your imagination.)
+        </Text>
+         <Divider />
+         <Text style={{marginBottom:10,fontWeight:'bold'}}>For the sculptor:</Text>
+          <Text style={{marginBottom:10}}>
+           Without hurting your partner, recreate the shape of your chosen tree from your partners body. (The partner is allowed to give suggestions, but not to move by themselves!)
+        </Text>
+        <Text style={{marginBottom:10}}>
+         When you're done, you can put on a "show", explaining your sculptures to an audience.
+        </Text>
+        <Text style={{marginBottom:10}}>
+         Finally, take a photo of your sculpture!
+        </Text>
+        <Text style={{marginBottom:10}}>
+         You can now change roles with your partner and make another sculpture. Or, if you're in a group, you can make one large shared sculpture together!
         </Text>
       </View>
     )
   },
   {
-    title: 'Bird silhouettes',
-    intro: 'some text',
-    toolsNeeded: 'a set of cards with bird silhouettes',
-    notes: 'do not eat the red berries',
-    content: 'Some <em>text</em>.',
+    title: 'Find the non-biodegradable',
+    intro: 'Find things that can\'t decompose through natural processes.',
+    about:'Non-biodegradable materials cannot be destroyed by bacteria so they remain where we left them for a long, long time. They need to be disposed carefully, definitely not thrown out in the forrest.',
+    teamGame:true,
+    teamSize:'any',
+    aloneGame:true,
+    material: '',
+    duration: '20 min',
+    howToPlay: (
+      <View>
+        <Text style={{marginBottom:10}}>
+          Think for a moment about the words "trash" and "pollution". What do you imagine when you read them? If you're playing in a group, discuss it together.
+        </Text>
+        <Text style={{marginBottom:10}}>
+          For 10 minutes or so, look around you and see whether you can spot any trash or pollution in the forrest. Do you see anything? Walk around the place (if you're in a group, you go together or in opposite directions).
+        </Text>
+        <Text style={{marginBottom:10}}>
+          If you can safely do so, collect the trash. If not, take a photo of it.
+        </Text>
+        <Text>
+          Return to the starting place. If you're playing in a group, show each other what you found. Try to imagine how it got there - was it an accident? Was it intentional? How long do you think the trash has laid there?
+        </Text>
+      </View>
+    )
   },
 ]
 

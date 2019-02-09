@@ -76,7 +76,7 @@ const steps = [
           5.809895396232605,
           50.41412914913355
         ],
-    activities:[1],
+    activities:[1,3],
     last:false
   },
   {
@@ -86,7 +86,7 @@ const steps = [
           5.8110058307647705,
           50.41508287016318
         ],
-    activities:[],
+    activities:[1,3],
     last:false
   },
   {
@@ -96,7 +96,7 @@ const steps = [
           5.812912881374359,
           50.413688174854705
         ],
-    activities:[],
+    activities:[1,3],
     last:false
   },
   {
@@ -106,7 +106,7 @@ const steps = [
           5.821066796779633,
           50.41475129191075
         ],
-    activities:[],
+    activities:[2,3],
     last:false
   },
   {
@@ -116,7 +116,7 @@ const steps = [
           5.820806622505188,
           50.41448295111051
         ],
-    activities:[],
+    activities:[2,3],
     last:false
   },
   {
@@ -126,7 +126,7 @@ const steps = [
           5.817453861236572,
           50.41223019579127
         ],
-    activities:[],
+    activities:[1,3],
     last:false
   },
   {
@@ -136,7 +136,7 @@ const steps = [
           5.816434621810913,
           50.4118678306102
         ],
-    activities:[],
+    activities:[2,3],
     last:false
   },
   {
@@ -146,7 +146,7 @@ const steps = [
           5.815994739532471,
           50.4117139954972
         ],
-    activities:[],
+    activities:[3],
     last:false
   },
   {
@@ -156,7 +156,7 @@ const steps = [
           5.8136773109436035,
           50.41014143013701
         ],
-    activities:[2],
+    activities:[2,3],
     last:false
   },
   {
@@ -176,7 +176,7 @@ const steps = [
           5.8101314306259155,
           50.41014484881397
         ],
-    activities:[],
+    activities:[0],
     last:true
   },
 
