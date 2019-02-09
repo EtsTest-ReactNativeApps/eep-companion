@@ -1,29 +1,55 @@
 import React, { Component } from 'react';
 import {
   Image,
-  Text,
   View,
   StyleSheet,
-  Button
+  Button,
+  ScrollView
 } from 'react-native';
 import {
   createStackNavigator,
   NavigationActions
 } from 'react-navigation';
+import activities from '../content/activities.js';
 import Activity from '../components/activity.js';
 
+import {
+  Card,
+  Text
+ } from 'react-native-elements';
+
+
 class ActivityScreen extends Component {
-  static navigationOptions = {
-    title: 'Activity XY',
-    //TODO this will need to be set in constructor...
-  };
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "Path Info"
+    }
+  }
 
   render() {
     const { navigation } = this.props;
-    const activityID = navigation.getParam('id',0);
+    const activityID = navigation.getParam('id',-1);
+
+    if (activityID === -1) {
+      navigation.navigate('ActivityList',{showAll:true})
+    }
+
+    activity = activities[activityID];
 
     return (
-      <Activity id={activityID} snippet={0}/>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.containerFull}>
+          <Text>{activity.about}</Text>
+
+          <View style={{marginTop:10,marginBottom:10}}>
+            <Text><Text>Material:</Text> {activity.material}</Text>
+            <Text><Text>Duration:</Text> {activity.duration}</Text>
+          </View>
+          <Card title="HOW DO I PLAY?">
+            {activity.howToPlay}
+          </Card>
+          <Text>.</Text>
+      </ScrollView>
     )
   }
 }
@@ -34,8 +60,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor:'#aabbcc',
-  }
+  },
+  containerFull: {
+    backgroundColor: '#fff',
+    padding:10,
+    borderWidth:2,
+  },
 });
 
 export default ActivityScreen;

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import {
   Image,
-  Text,
   View,
   StyleSheet,
-  Button,
   TouchableHighlight,
   Dimensions,
   ScrollView
@@ -13,42 +11,23 @@ import {
   createStackNavigator,
   NavigationActions
 } from 'react-navigation';
-
-import globalStyles from '../styles/globalStyles.js';
-import ModButton from '../components/modButton.js';
+import { Text, Button, Icon } from 'react-native-elements';
+import steps from '../content/steps.js';
 
 class PathStep extends Component {
   render() {
     const step = this.props.step;
     const { navigation } = this.props;
     const nextStep = (step.last) ? null : (this.props.id + 1);
-    // let nextButton;
-    // if (step.last) {
-    //   nextButton = (<ModButton
-    //     title="Finish"
-    //     onPress = {() =>
-    //       navigation.navigate('End')
-    //     }
-    //   />);
-    // } else {
-    //   nextButton = (<ModButton
-    //     title="next"
-    //     onPress = {() =>
-    //       navigation.push('Path',{'step':nextStep})
-    //     }
-    //   />);
-    // };
-
 
     let nextButton;
     if (step.last) {
       nextButton = (
         <TouchableHighlight
-          style={[styles.navButton,styles.navButtonLast]}
-          onPress={()=>navigation.navigate('End')}
+          style={[styles.navButton,styles.navButtonDisabled]}
           underlayColor="white"
         >
-          <Text style={styles.navButtonText}>FINISH</Text>
+          <Text style={[styles.navButtonText,styles.navButtonTextDisabled]}>NEXT</Text>
         </TouchableHighlight>
     );
     } else {
@@ -63,48 +42,79 @@ class PathStep extends Component {
         );
     };
 
-    let backButton = (
-      <TouchableHighlight
-        style={styles.navButton}
-        onPress={()=>navigation.goBack()}
-        underlayColor="white"
-      >
-        <Text style={styles.navButtonText}>BACK</Text>
-      </TouchableHighlight>
-    );
+    let backButton;
+    if (this.props.id === 0) {
+      backButton = (
+        <TouchableHighlight
+          style={[styles.navButton,styles.navButtonDisabled]}
+          underlayColor="white"
+        >
+          <Text style={[styles.navButtonText,styles.navButtonTextDisabled]}>BACK</Text>
+        </TouchableHighlight>
+      );
+    } else {
+      backButton = (
+        <TouchableHighlight
+          style={styles.navButton}
+          onPress={()=>navigation.goBack()}
+          underlayColor="white"
+        >
+          <Text style={styles.navButtonText}>BACK</Text>
+        </TouchableHighlight>
+      );
+    };
 
     let activityLink;
 
     if (step.activities.length == 0) {
       activityLink = null;
-    } else {
-      activityLink = (<ModButton
-        title="Possible activities"
-        onPress = {() =>
-          navigation.navigate('ActivityList',{'activityIDs':step.activities})
-        }
-      />)
-
+    } else if (step.activities.length === 1) {
+      activityLink = (<Button
+        backgroundColor='#ffd42a'
+        buttonStyle={{borderRadius:3, marginLeft: 0, marginRight: 0, marginBottom: 0,marginTop:10}}
+        title={`1 ACTIVITY`}
+        onPress = {() => navigation.navigate('ActivityList',{'activityIDs':step.activities})}
+        textStyle={{color:'#222222', fontWeight:'bold'}}
+       />)
+    }  else {
+      activityLink = (<Button
+        backgroundColor='#ffd42a'
+        buttonStyle={{borderRadius:3, marginLeft: 0, marginRight: 0, marginBottom: 0,marginTop:10}}
+        title={`${step.activities.length} ACTIVITIES`}
+        onPress = {() => navigation.navigate('ActivityList',{'activityIDs':step.activities})}
+        textStyle={{color:'#222222', fontWeight:'bold'}}
+       />)
     }
 
     return (
       <View style={[styles.wrapper]}>
-        <View style={styles.mapButton}>
-          <ModButton
-            style={styles.navButton}
-            title="show map"
+        <View style={styles.topControlView}>
+          <Button
+            backgroundColor='#00463f'
+            buttonStyle={{borderRadius:3, marginLeft: 0, marginRight: 0, marginBottom: 0,marginTop:10}}
+            textStyle={{fontWeight:'bold',color:'white'}}
+            title="INTRO"
             onPress = {() =>
-            navigation.navigate('Map')
+            navigation.navigate('Intro')
+          }
+          />
+          <Button
+            backgroundColor='#00463f'
+            buttonStyle={{borderRadius:3, marginLeft: 0, marginRight: 0, marginBottom: 0,marginTop:10}}
+            textStyle={{fontWeight:'bold',color:'white'}}
+            color='#00463f'
+            title="SHOW MAP"
+            onPress = {() =>
+            navigation.navigate('Map',{'stepID':this.props.id})
           }
           />
         </View>
-        <View style={styles.pathPhoto}>
-          <ScrollView horizontal={true} contentContainerStyle={{alignItems: 'center'}} style={styles.imageScroll} ref='_scrollView'>
-            <Image resizeMode='cover' style={styles.stepImage} source={step.image}/>
-          </ScrollView>
-          <View style={styles.activityLink}>
-            {activityLink}
-          </View>
+        <View
+        style={styles.pathPhoto}>
+          <Image style={styles.stepImage} source={step.image} />
+        </View>
+        <View style={styles.activityLinkView}>
+          {activityLink}
         </View>
         <View style={styles.nav}>
           {backButton}
@@ -124,15 +134,6 @@ class PathScreen extends Component {
     const { navigation } = this.props;
     const stepID = navigation.getParam('step', 0);
     const step = steps[stepID];
-
-    // if (step === undefined) {
-    //   return (
-    //     <View><Text>Step id {stepID} not found.</Text></View>
-    //   );
-    // }
-
-    //intentionally not catching errors - if there is no step of this id, this should die a fiery death.
-
     return (
       <PathStep step={step} navigation={navigation} id={stepID} />
     );
@@ -143,38 +144,52 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     flexDirection:'column',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    // backgroundColor:'#aabbcc',
+    backgroundColor:'#222222',
+  },
+  topControlView: {
+    height:80,
+    flex:1,
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-between',
   },
   mapButton: {
-    position:'absolute',
-    top: 0,
-    right: 0,
-    marginTop:30,
-    zIndex: 100
+
   },
   imageScroll: {
     flex:1,
   },
   stepImage: {
-    // note to self: NO FLEX!
-    // width:Dimensions.get('window').width,
-    flex:1,
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover',
+    borderColor:'#00463f',
+    borderTopWidth:10,
+    borderBottomWidth:10,
+    //borderStyle:'solid',
+    //width:Dimensions.get('window').width,
   },
   pathPhoto: {
     flex:4,
     width:'100%',
-    backgroundColor:'#ccffff',
+    backgroundColor:'#000000',
+    height:null,
+    borderColor:'#00463f',
+    borderTopWidth:12,
+    borderBottomWidth:12,
   },
-  activityLink: {
+  activityLinkView: {
     flex:1,
-    position:'absolute',
-    bottom:0,
-    paddingBottom:10,
+    //position:'absolute',
+    //bottom:0,
+    //paddingBottom:10,
     width:'100%',
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  activityLink: {
+    color:'#222222',
   },
   // activityLinkButton: {
   //   width: '30%'
@@ -182,7 +197,6 @@ const styles = StyleSheet.create({
   nav: {
     flex:0.5,
     flexDirection: 'row',
-    backgroundColor: '#ffccff',
     width:'100%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -190,49 +204,28 @@ const styles = StyleSheet.create({
   navButton: {
     flex:1,
     height:'100%',
-    backgroundColor:'#fff',
+    backgroundColor:'#00463f',
     alignItems:'center',
     justifyContent:'center',
   },
   navButtonNext: {
     borderLeftWidth:1,
-    borderLeftColor:'#ddd',
+    borderLeftColor:'#000000',
   },
-  navButtonLast: {
-    borderLeftWidth:1,
-    borderLeftColor:'#ddd',
+  navButtonDisabled: {
+    backgroundColor:'transparent',
   },
   navButtonText: {
     fontSize:16,
+    color:'#ffffff',
+
     // textTransform:'uppercase',
+  },
+  navButtonTextDisabled: {
+    color:'#999'
   }
 });
 
-const steps = [
-  {
-    title:'some step', //this is more for convenience sake
-    image:require('../assets/pathPhotos/00.jpg'),
-    activities:[0,1,2],
-    last:false
-  },
-  {
-    title:'second step', //this is more for convenience sake
-    image:require('../assets/pathPhotos/01.jpg'),
-    activities:[],
-    last:false
-  },
-  {
-    title:'third step', //this is more for convenience sake
-    image:require('../assets/pathPhotos/02.jpg'),
-    activities:[0,1,2],
-    last:false
-  },
-  {
-    title:'last step', //this is more for convenience sake
-    image:require('../assets/pathPhotos/03.jpg'),
-    activities:[0,1,2],
-    last:true
-  },
-]
+
 
 export default PathScreen;

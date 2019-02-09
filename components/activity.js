@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {
   Image,
-  Text,
   View,
   StyleSheet,
   Button,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions,
+  ScrollView
 } from 'react-native';
 import {
   createStackNavigator,
@@ -13,18 +14,19 @@ import {
   withNavigation
 } from 'react-navigation';
 
-import activities from '../content/activities.js';
+import {
+  Card,
+  Text
+ } from 'react-native-elements';
 
 
 class Activity extends Component {
-
-  //TODO put this into JSON?
 
   render() {
     const { navigation } = this.props;
     const activityID = this.props.id;
     const isSnippet = (this.props.snippet === 1);
-    const activity = activities[activityID];
+    const activity = this.props.data;
 
     if (!activity) {
       return null;
@@ -32,27 +34,44 @@ class Activity extends Component {
 
     let snippetContent = (
       <View style={styles.containerSnippet}>
-        <View style={styles.snippetInfo}>
-          <Text>{activity.title}</Text>
-          <Text>{activity.intro}.</Text>
-          <Text><Text>Tools needed:</Text> {activity.toolsNeeded}.</Text>
-        </View>
         <TouchableHighlight
           style={[styles.navButton,styles.snippetMore]}
           onPress={()=>navigation.navigate('Activity',{id:activityID})}
           underlayColor="white"
         >
-          <Text style={styles.navButtonText}>BACK</Text>
+        <View style={styles.snippetInfo}>
+
+          <Text>{activity.title}</Text>
+          <Text>{activity.intro}.</Text>
+        </View>
         </TouchableHighlight>
       </View>
     );
 
     let fullContent = (
-      <View style={styles.containerFull}>
-        <Text>{activity.title}</Text>
-        <Text>ALL THE STUFF!!!</Text>
-        {activity.content}
-      </View>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.containerFull}>
+          <Text>{activity.about}</Text>
+
+          <View style={{marginTop:10,marginBottom:10}}>
+            <Text><Text>Material:</Text> {activity.material}</Text>
+            <Text><Text>Duration:</Text> {activity.duration}</Text>
+          </View>
+          {// TODO format this better! Maybe another Card?
+          }
+
+          <Card title="HOW DO I PLAY?">
+            {activity.howToPlay}
+          </Card>
+
+          {/* <HTML
+            html={activity.content}
+            imagesMaxWidth={Dimensions.get('window').width}
+            tagsStyles={{li:{margin:0,padding:0}}}
+            containerStyle={{marginTop:0}}
+            //renderers={{ul:ul}}
+            // TODO the original ul renderer has hardcoded padding; my attempt at copying and modifying a renderer don't work (yet)
+          /> */}
+        </ScrollView>
     )
 
     if (isSnippet) {
@@ -67,8 +86,9 @@ const styles = StyleSheet.create({
   containerFull: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding:10
+    //alignItems: 'center',
+    //justifyContent: 'center',
     // backgroundColor:'#aabbcc',
   },
   containerSnippet: {
