@@ -8,37 +8,36 @@ http://oranetwork.eu/index.php/131.html\
 http://oracapacitybuilding.weebly.com/resources.html
 
 ### Table of Contents
-[Situation](#situation)
-: [Our suggested solution](#our-suggested-solution)
+**[Situation](#situation)**
+* [Our suggested solution](#our-suggested-solution)
 
-[Planning](#planning)
-: [Expectations](#expectations)
-: [Requirements](#requirements)
-: [Chosen technology](#chosen-technology)
+**[Planning](#planning)**
+* [Expectations](#expectations)
+* [Requirements](#requirements)
+* [Chosen technology](#chosen-technology)
 
-[Implementation](#implementation)
-: [1. Le Fagotin](#1-le-fagotin)
-: [2. Berlin](#2-berlin)
-: [Missing functionality](#missing-functionality)
+**[Implementation](#implementation)**
+* [1. Le Fagotin](#1-le-fagotin)
+* [2. Berlin](#2-berlin)
+* [Missing functionality](#missing-functionality)
 
-[Presentation notes](#presentation-notes)
-: []()
+**[Presentation notes](#presentation-notes)**
 
-[Conclusion](#conclusion)
-: [Option 1: App as a service](#option-1-app-as-a-service)
-: [Option 2: Web app](#option-2-web-app)
-: [Other recommendations](#other-recommendations)
+**[Conclusion](#conclusion)**
+* [Option 1: App as a service](#option-1-app-as-a-service)
+* [Option 2: Web app](#option-2-web-app)
+* [Other recommendations](#other-recommendations)
 
-[App documentation](#app-documentation)
-: [Dev dependencies](#dev-dependencies)
-: [Installation](#installation)
-: [Running the code](#running-the-code)
-: [Known issues](#known-issues)
-: [License](#license)
-: [Screenshots](#screenshots)
+**[App documentation](#app-documentation)**
+* [Dev dependencies](#dev-dependencies)
+* [Installation](#installation)
+* [Running the code](#running-the-code)
+* [Known issues](#known-issues)
+* [License](#license)
+* [Screenshots](#screenshots)
 
-[Credits](#credits)
-: [Creators](#creators)
+**[Credits](#credits)**
+* [Creators](#creators)
 
 ---
 
